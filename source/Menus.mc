@@ -1,8 +1,8 @@
 using Toybox.Application;
 using Toybox.WatchUi;
 
-function openTraining(mode, gps) {
-    var controller = new TrainingController(mode, gps);
+function openTraining(mode) {
+    var controller = new TrainingController(mode);
     Application.getApp().controller = controller;
     WatchUi.pushView(new TrainingView(controller), new TrainingDelegate(controller), WatchUi.SLIDE_LEFT);
 }
@@ -11,29 +11,18 @@ class ModeMenu extends WatchUi.Menu2 {
     function initialize() {
         Menu2.initialize({ :title => "Western Ride" });
         addItem(new WatchUi.MenuItem("Halle", "Ohne GPS", :indoor, {}));
-        addItem(new WatchUi.MenuItem("Platz", "GPS optional", :arena, {}));
-        addItem(new WatchUi.MenuItem("Ausritt", "GPS optional", :trail, {}));
+        addItem(new WatchUi.MenuItem("Platz", "GPS aktiviert", :arena, {}));
+        addItem(new WatchUi.MenuItem("Ausritt", "GPS aktiviert", :trail, {}));
     }
 }
 
 class ModeDelegate extends WatchUi.Menu2InputDelegate {
     function initialize() { Menu2InputDelegate.initialize(); }
     function onSelect(item) {
-        if (item.getId() == :indoor) { openTraining("Halle", false); return; }
-        var mode = item.getId() == :arena ? "Platz" : "Ausritt";
-        var menu = new WatchUi.Menu2({ :title => mode });
-        menu.addItem(new WatchUi.MenuItem("GPS nutzen", "Strecke aufzeichnen", :gps, {}));
-        menu.addItem(new WatchUi.MenuItem("Ohne GPS", "Nur Zeit und Puls", :noGps, {}));
-        WatchUi.pushView(menu, new GpsDelegate(mode), WatchUi.SLIDE_LEFT);
-    }
-}
-
-class GpsDelegate extends WatchUi.Menu2InputDelegate {
-    var _mode;
-    function initialize(mode) { Menu2InputDelegate.initialize(); _mode = mode; }
-    function onSelect(item) {
-        WatchUi.popView(WatchUi.SLIDE_RIGHT);
-        openTraining(_mode, item.getId() == :gps);
+        var mode = "Halle";
+        if (item.getId() == :arena) { mode = "Platz"; }
+        else if (item.getId() == :trail) { mode = "Ausritt"; }
+        openTraining(mode);
     }
 }
 

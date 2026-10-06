@@ -8,14 +8,14 @@
 * `resources/`: App-Name und eigenes einfaches Hufeisen-Icon in 70 × 70 Pixeln.
 * `scripts/`: Build und Übergabe an den laufenden Simulator.
 
-GPS, Pulsanzeige, Gangarten, Abschnittsmarker und Wiederherstellung nach App-Abbruch sind noch offen. Die Moduswahl setzt aktuell den Aktivitätsnamen, aktiviert aber keine GPS-Funktionen. Die dargestellte Dauer wird anhand von `System.getTimer()` berechnet; eine Übereinstimmung mit der FIT-Timerzeit ist im Test zu prüfen.
+GPS, Pulsanzeige und manuelle Gangarten mit FIT-Zeitkonten sind implementiert. Platz und Ausritt aktivieren GPS automatisch bereits bei der Moduswahl. Halle deaktiviert GPS. Ein GPS-Auswahlmenue gibt es nicht. Abschnittsmarker und Wiederherstellung nach App-Abbruch sind noch offen. Die dargestellte Dauer basiert auf System.getTimer().
 
 ## Voraussetzungen
 
 1. [Garmin Connect IQ SDK Manager](https://developer.garmin.com/connect-iq/sdk/) installieren und darin ein SDK sowie die Gerätedateien für Venu 3S herunterladen.
 2. In VS Code die Erweiterung `garmin.monkey-c` installieren. Das Repo enthält eine Erweiterungsempfehlung.
 3. Einen lokalen Garmin-Entwicklerschlüssel im DER-Format bereitstellen. Private Schlüssel bleiben außerhalb des Repos.
-4. SDK-Pfad auf den entpackten SDK-Ordner setzen, der `bin/monkeyc.bat` enthält. Er zeigt nicht auf den SDK Manager.
+4. Tippen oeffnet waehrend der Aufzeichnung die Gangartenauswahl. Zurueck pausiert und oeffnet Weiter, Speichern, Gangartenzeiten und Verwerfen.
 
 ## Build
 
@@ -71,7 +71,7 @@ Der Aufruf kann aktiv bleiben, solange die App im Simulator läuft. Eine noch of
 1. Halle, Platz oder Ausritt im Startmenü auswählen.
 2. In der Trainingsansicht startet die Auswahlaktion die Aufzeichnung.
 3. Erneute Auswahl pausiert; noch eine Auswahl setzt fort.
-4. Zurück oder Menü pausiert eine laufende Aufzeichnung und öffnet Weiter, Speichern und Verwerfen.
+4. Tippen oeffnet waehrend der Aufzeichnung die Gangartenauswahl. Zurueck pausiert und oeffnet Weiter, Speichern, Gangartenzeiten und Verwerfen.
 5. Verwerfen öffnet eine separate Bestätigung. Abbrechen ist der erste Eintrag.
 6. Speichern oder bestätigtes Verwerfen führt bei Erfolg zur Moduswahl zurück.
 

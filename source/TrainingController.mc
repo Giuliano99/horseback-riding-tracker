@@ -9,10 +9,10 @@ class TrainingController {
     var gaits;
     var metrics;
 
-    function initialize(selectedMode, useGps) {
+    function initialize(selectedMode) {
         mode = selectedMode;
         gaits = new GaitTracker();
-        metrics = new MetricsProvider(useGps && mode != "Halle");
+        metrics = new MetricsProvider(mode == "Platz" || mode == "Ausritt");
         recording = new RecordingService();
     }
 

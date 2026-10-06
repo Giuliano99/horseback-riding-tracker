@@ -13,7 +13,7 @@ Die Herzfrequenz gehört zum Reiter. Pferdepuls und andere Pferdesensoren sind k
 | Modus | Basisdaten | GPS-Verhalten im ersten Entwurf |
 | --- | --- | --- |
 | Halle | Dauer, Reiterpuls, manuelle Gangarten, Abschnitte | Aus; keine GPS-Distanz oder Geschwindigkeit anzeigen |
-| Platz | Wie Halle; ergänzend Distanz und Geschwindigkeit | Optional; auf kleinen Flächen als eingeschränkte Messung kennzeichnen |
+| Platz | Dauer, Reiterpuls, Gangarten, Distanz und Geschwindigkeit | Immer an; Empfangsstatus anzeigen und Messungen auf kleinen Flaechen im Praxistest bewerten |
 | Ausritt | Wie Halle; zusätzlich Strecke und Geschwindigkeit | An; Empfangsstatus anzeigen und fehlende Werte kenntlich machen |
 
 GPS-Messungen auf engen Linien und bei häufigen Wendungen müssen im Praxistest bewertet werden. Aus Gangarten wird im ersten Umfang keine Distanz geschätzt.
@@ -61,7 +61,7 @@ Die Veröffentlichung im Connect IQ Store folgt erst nach stabiler Gerätevalidi
 ## Praxistests
 
 * Halle: Start ohne GPS, längere Aufzeichnung, fehlender Puls, Gangartwechsel und Pause.
-* Platz: Enge Wendungen, unruhige Geschwindigkeit, optionale GPS-Nutzung.
+* Platz: Automatische GPS-Aktivierung, enge Wendungen und unruhige Geschwindigkeit.
 * Ausritt: GPS-Fix, Empfangsverlust und Rückkehr des Empfangs, längere Strecke.
 * In allen Modi: Tastenbedienung, Lesbarkeit, Speichern, bestätigtes Verwerfen und Akkuverbrauch.
 
