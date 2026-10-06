@@ -1,0 +1,26 @@
+# Connect IQ build outputs
+bin/
+build/
+out/
+*.prg
+*.iq
+*.debug.xml
+
+# Local developer signing keys
+*.der
+*.pem
+*.key
+
+# Personal training and sensor data
+data/private/
+*.fit
+
+# Local environment
+.env
+.env.*
+!.env.example
+Thumbs.db
+.DS_Store
+
+# Local simulator log
+debug.log

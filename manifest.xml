@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="3">
+    <iq:application id="67ba51c7e81e4e109f76f3e7d01266d8" type="watch-app"
+        name="@Strings.AppName" entry="WesternRideApp"
+        launcherIcon="@Drawables.LauncherIcon" minApiLevel="3.2.0">
+        <iq:products>
+            <iq:product id="venu3s" />
+        </iq:products>
+        <iq:permissions>
+            <iq:uses-permission id="Fit" />
+        </iq:permissions>
+        <iq:languages />
+        <iq:barrels />
+    </iq:application>
+</iq:manifest>
