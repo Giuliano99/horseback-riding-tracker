@@ -4,7 +4,7 @@ Stand der Quellenprüfung: 6. Oktober 2026. App-Einstieg, Menüs, Trainingsansic
 
 ## Plattform und Quellen
 
-Das Grundgerüst ist eine eigenständige Connect-IQ-Watch-App in Monkey C für das Produktziel `venu3s`. Garmin führt die Venu 3S als Connect-IQ-Gerät mit rundem AMOLED-Display und 390 × 390 Pixeln. Das Manifest setzt vorläufig API 3.2.0 als Minimum und die Berechtigung `Fit`. Als SDK ist Version 9.2.0, Build `2026-06-09-92a1605b2`, eingerichtet. Quelle: [Garmin-Gerätereferenz](https://developer.garmin.com/connect-iq/articles/device-reference/venu3s.html).
+Das Grundgerüst ist eine eigenständige Connect-IQ-Watch-App in Monkey C für das Produktziel `venu3s`. Garmin führt die Venu 3S als Connect-IQ-Gerät mit rundem AMOLED-Display und 390 × 390 Pixeln. Das Manifest setzt vorläufig API 3.2.0 als Minimum und die Berechtigungen `Fit`, `FitContributor`, `Sensor` und `Positioning`. Als SDK ist Version 9.2.0, Build `2026-06-09-92a1605b2`, eingerichtet. Quelle: [Garmin-Gerätereferenz](https://developer.garmin.com/connect-iq/articles/device-reference/venu3s.html).
 
 Für FIT-Aufzeichnungen nutzt RecordingService `ActivityRecording.createSession()` und `Activity.SPORT_HORSEBACK_RIDING`. Die Sportkonstanten im ActivityRecording-Modul sind inzwischen veraltet; das Grundgerüst verwendet die Konstanten aus Activity. Quelle: [ActivityRecording](https://developer.garmin.com/connect-iq/api-docs/Toybox/ActivityRecording.html).
 
@@ -65,3 +65,7 @@ Ein geeignetes Analyseformat muss Sensorzeitstempel, X/Y/Z-Werte, manuelle Ganga
 * Darstellung eigener FIT-Felder und Runden in Garmin Connect.
 * Sensorfrequenz, Exportweg, Akkuverbrauch und Speicherbedarf für Phase 3.
 * Verhalten bei App-Abbruch oder Neustart; Wiederherstellung ist vor einem stabilen Release zu untersuchen.
+
+## Messwerte im aktuellen Prototyp
+
+Puls stammt aus `Sensor.enableSensorEvents`, GPS aus `Position.enableLocationEvents`. Pulswerte bis einschlie?lich null/0 sowie Messwerte ?lter als f?nf Sekunden sind nicht verf?gbar. GPS-Geschwindigkeit wird nur mit frischem QUALITY_USABLE oder QUALITY_GOOD angezeigt; die Einheit wird von m/s nach km/h umgerechnet. Distanz stammt aus der Garmin-Aktivit?t. In Bereitschaft wird keine Distanz einer fr?heren Session angezeigt. GPS und Puls werden beim Verlassen, Speichern, Verwerfen und App-Ende abgeschaltet. App-Abbruch speichert nicht automatisch und stellt keine Session wieder her. Quellen: [Sensor](https://developer.garmin.com/connect-iq/api-docs/Toybox/Sensor.html), [Position](https://developer.garmin.com/connect-iq/api-docs/Toybox/Position.html), [Activity.Info](https://developer.garmin.com/connect-iq/api-docs/Toybox/Activity/Info.html), [FitContributor](https://developer.garmin.com/connect-iq/api-docs/Toybox/FitContributor.html).

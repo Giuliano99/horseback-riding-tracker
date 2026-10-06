@@ -1,0 +1,10 @@
+<resources>
+    <fitContributions>
+        <fitField id="0" displayInChart="true" fillColor="#FFD700" sortOrder="0" precision="0" chartTitle="@Strings.Gait" dataLabel="@Strings.Gait" unitLabel="@Strings.GaitCodes" />
+        <fitField id="1" displayInActivitySummary="true" sortOrder="1" precision="1" dataLabel="@Strings.UnknownTime" unitLabel="@Strings.Seconds" />
+        <fitField id="2" displayInActivitySummary="true" sortOrder="2" precision="1" dataLabel="@Strings.StillTime" unitLabel="@Strings.Seconds" />
+        <fitField id="3" displayInActivitySummary="true" sortOrder="3" precision="1" dataLabel="@Strings.WalkTime" unitLabel="@Strings.Seconds" />
+        <fitField id="4" displayInActivitySummary="true" sortOrder="4" precision="1" dataLabel="@Strings.JogTime" unitLabel="@Strings.Seconds" />
+        <fitField id="5" displayInActivitySummary="true" sortOrder="5" precision="1" dataLabel="@Strings.LopeTime" unitLabel="@Strings.Seconds" />
+    </fitContributions>
+</resources>

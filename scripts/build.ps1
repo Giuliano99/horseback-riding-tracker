@@ -1,6 +1,7 @@
 param(
     [string]$SdkPath = $env:CONNECT_IQ_SDK,
-    [string]$DeveloperKey = $env:CONNECT_IQ_DEVELOPER_KEY
+    [string]$DeveloperKey = $env:CONNECT_IQ_DEVELOPER_KEY,
+    [switch]$UnitTests
 )
 $ErrorActionPreference = 'Stop'
 if (-not $SdkPath) {
@@ -20,7 +21,13 @@ $outputDirectory = Join-Path $projectRoot 'bin'
 New-Item -ItemType Directory -Path $outputDirectory -Force | Out-Null
 Push-Location -LiteralPath $projectRoot
 try {
-    & (Join-Path $SdkPath 'bin\monkeyc.bat') -f monkey.jungle -d venu3s -y $DeveloperKey -o (Join-Path $outputDirectory 'WesternRide.prg')
+    $compilerArgs = @('-f', 'monkey.jungle', '-d', 'venu3s', '-y', $DeveloperKey)
+    if ($UnitTests) {
+        $compilerArgs += @('--unit-test', '-o', (Join-Path $outputDirectory 'WesternRideTests.prg'))
+    } else {
+        $compilerArgs += @('-o', (Join-Path $outputDirectory 'WesternRide.prg'))
+    }
+    & (Join-Path $SdkPath 'bin\monkeyc.bat') @compilerArgs
     if ($LASTEXITCODE -ne 0) { throw "Monkey-C-Build fehlgeschlagen (Exitcode $LASTEXITCODE)." }
 } finally {
     Pop-Location

@@ -1,3 +1,11 @@
 <strings>
     <string id="AppName">Western Ride</string>
+    <string id="Gait">Gangart</string>
+    <string id="GaitCodes">0 unbekannt, 1 still, 2 Schritt, 3 Jog, 4 Lope</string>
+    <string id="Seconds">s</string>
+    <string id="UnknownTime">Unbekannt Zeit</string>
+    <string id="StillTime">Stillstand Zeit</string>
+    <string id="WalkTime">Schritt Zeit</string>
+    <string id="JogTime">Jog Zeit</string>
+    <string id="LopeTime">Lope Zeit</string>
 </strings>

@@ -2,7 +2,7 @@
 
 ## Vorhandener Stand
 
-* `manifest.xml`: Watch App mit festem Ziel `venu3s`, API-Minimum 3.2.0 und FIT-Berechtigung.
+* `manifest.xml`: Watch App mit festem Ziel `venu3s`, API-Minimum 3.2.0 und Berechtigungen Fit, FitContributor, Sensor und Positioning.
 * `monkey.jungle`: Quellcode- und Ressourcenpfade.
 * `source/`: App-Einstieg, Modusmenü, Trainingsansicht, Zustandssteuerung und Garmin-Aufzeichnung.
 * `resources/`: App-Name und eigenes einfaches Hufeisen-Icon in 70 × 70 Pixeln.
@@ -104,3 +104,9 @@ Am 6. Oktober 2026 wurden XML-Wohlgeformtheit, Ressourcenverweise, Zielgerät un
 Der Compiler meldet erfolgreich `Connect IQ Compiler version: 9.2.0`. Nach Installation der Venu-3S-Gerätedateien wurde `scripts/build.ps1` erfolgreich ausgeführt: `BUILD SUCCESSFUL`, Ergebnis `bin/WesternRide.prg`. Beim ersten Build musste der Compiler eine `default.jungle`-Datei im SDK-Verzeichnis erzeugen; dafür benötigte der Aufruf Schreibzugriff außerhalb der Workspace-Sandbox.
 
 Damit ist die App-Kompilierung für `venu3s` bestätigt. Am selben Tag wurden anschließend Bildschirmdarstellung, die Auswahl aller drei Modi, Start/Pause/Fortsetzen, Abschlussmenü, Abbrechen des Verwerfens und Speichern im Simulator geprüft. Die FIT-Dateien wurden mit Garmins offiziellem Python-FIT-SDK auf Integrität, Sporttyp, Sessionanzahl und Timerereignisse geprüft. Details und offene Tests stehen in [SIMULATOR_TEST.md](SIMULATOR_TEST.md).
+
+## Automatische Gangartentests
+
+Bei laufendem Simulator `./scripts/test.ps1` ausf?hren. Das Skript baut eine separate Test-App. Gepr?ft werden Gangartenwechsel, nicht zugeordnete Zeit, unver?nderte Zeit bei Pause und die Summe aller Zeitkonten. Danach `./scripts/build.ps1` und `./scripts/simulate.ps1` f?r die normale App nutzen.
+
+FIT-Feld 0 enth?lt den Gangartencode: 0 unbekannt, 1 Stillstand, 2 Schritt, 3 Jog, 4 Lope. Felder 1 bis 5 enthalten die jeweilige aktive Zeit in Sekunden als Session-Zusammenfassung. Die tats?chliche Darstellung in Garmin Connect muss nach dem ersten Uhrentest gepr?ft werden. Der Simulator ersetzt keine Pr?fung von GPS-Empfang, optischem Puls und Akkulaufzeit auf der Uhr.
